@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Насрано даже здесь</title>
-  <meta name="description" content="Модер, убери" />
+  <meta name="description" content="Модер, убери">
   <meta name="theme-color" content="#1c1c1c">
-  <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
+
   <!-- Подключение шрифта Montserrat -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="preload"
-    href="css/styles.css"
-    as="style"
-  />
-  <link
-    rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-    as="style"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Подключение стилей с preload -->
+  <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
 </head>
 <body>
   <header>
@@ -28,9 +23,9 @@
       <h1>Клан Насрано</h1>
       <img src="catblimp.gif" loading="lazy" class="header-img">
     </div>
-    <button class="theme-toggle" onclick="toggleTheme()">День – Ночь</button>
+    <button class="theme-toggle">День – Ночь</button>
   </header>
-  
+
   <main class="container">
     <section class="search-section">
       <input type="text" id="searchInput" class="input-field" placeholder="Поиск..." />
@@ -47,35 +42,13 @@
       <div id="memeOutput"></div>
     </section>
   </main>
-  
+
   <footer>
-    <p>
-      © 2025 Клан Насрано. Все права защищены.
+    <p>© 2025 Клан Насрано. Все права защищены.
       <a href="http://www.constitution.ru/" target="_blank">Политика конфиденциальности</a>.
     </p>
   </footer>
-  
-  <!-- Контейнер с видео-виджетами -->
-<!--  <div id="videoContainer">
-    <div class="videoWidget">
-      <video autoplay muted loop>
-        <source src="subway.mp4" type="video/mp4" />
-        Ваш браузер не поддерживает тег video.
-      </video>
-    </div>
-    <div class="videoWidget">
-      <video autoplay muted loop>
-        <source src="gta.mp4" type="video/mp4" />
-        Ваш браузер не поддерживает тег video.
-      </video>
-    </div>
-    <div class="videoWidget">
-      <video autoplay muted loop>
-        <source src="mukbang.mp4" type="video/mp4" />
-        Ваш браузер не поддерживает тег video.
-      </video>
-    </div>
-  </div> -->
+
   <script src="js/app.js" defer></script>
 </body>
 </html>
