@@ -13,7 +13,7 @@ if (themeToggle) {
   // Переключение темы
   themeToggle.addEventListener('click', () => {
     const isLight = body.classList.toggle('light-mode');
-    themeToggle.textContent = isLight ? 'Ночь – День' : 'День – Ночь';
+    themeToggle.textContent = isLight ? 'День' : 'Ночь';
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 }
