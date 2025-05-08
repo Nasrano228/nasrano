@@ -23,11 +23,10 @@ header {
 }
 
 .header-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
-	margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .header-container h1 {
