@@ -13,7 +13,7 @@ if (themeToggle) {
   // Переключение темы
   themeToggle.addEventListener('click', () => {
     const isLight = body.classList.toggle('light-mode');
-    themeToggle.textContent = isLight ? 'День' : 'Ночь';
+    themeToggle.textContent = isLight ? 'День☀️' : 'Ночь🌙';
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 }
@@ -25,20 +25,45 @@ function performSearch() {
   window.location.href = `https://www.google.com/search?q=${encodeURIComponent(q)}&btnI`;
 }
 
-// Мемы с котиками
-function generateMeme() {
-  const text = document.getElementById('memeText').value.trim();
+// Котики с текстом
+function generateCat() {
+  const text = document.getElementById('catText').value.trim();
   if (!text) return alert('Черкани сначала чё-нить');
-  showMeme(`https://cataas.com/cat/says/${encodeURIComponent(text)}?size=50&style=original&t=${Date.now()}`);
+  showCat(`https://cataas.com/cat/says/${encodeURIComponent(text)}?size=50&style=original&t=${Date.now()}`);
 }
 
-function generateRandomMeme() {
-  showMeme(`https://cataas.com/cat?random=${Math.random()}`);
+function generateRandomCat() {
+  showCat(`https://cataas.com/cat?random=${Math.random()}`);
 }
 
-function showMeme(url) {
-  const out = document.getElementById('memeOutput');
-  out.innerHTML = `<img src="${url}" alt="Мем с котиком" loading="lazy">`;
+function showCat(url) {
+  const out = document.getElementById('catOutput');
+
+  const newImg = document.createElement('img');
+  newImg.src = url;
+  newImg.alt = 'Котик';
+  newImg.loading = 'lazy';
+  newImg.style.margin = '20px auto';
+  newImg.style.display = 'block';
+  newImg.style.opacity = '0';
+  newImg.style.transition = 'opacity 0.5s ease';
+
+  // Сначала вставляем картинку, но невидимую
+  out.appendChild(newImg);
+
+  newImg.onload = () => {
+    // Когда загрузилась — убираем предыдущего (если он есть)
+    const allCats = out.querySelectorAll('img');
+    if (allCats.length > 1) {
+      out.removeChild(allCats[0]); // удаляем первого (старого)
+    }
+
+    // Затем плавно показываем нового
+    requestAnimationFrame(() => {
+      newImg.style.opacity = '1';
+      newImg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  };
 }
 
 // Функция для снежинок (при необходимости)

@@ -7,10 +7,10 @@
   <meta name="description" content="Модер, убери">
   <meta name="theme-color" content="#1c1c1c">
 
-  <!-- Подключение шрифта Montserrat -->
+  <!-- Подключаем Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Подключение стилей с preload -->
   <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
@@ -32,14 +32,14 @@
       <button class="button" onclick="performSearch()">Поиск</button>
     </section>
         
-    <section class="meme-section">
+    <section class="cat-section">
       <h2>Котики</h2>
-      <input type="text" id="memeText" class="input-field" placeholder="Текст пиши" />
+      <input type="text" id="catText" class="input-field" placeholder="Текст пиши" />
       <div>
-        <button class="button" onclick="generateMeme()">Котик с текстом</button>
-        <button class="button" onclick="generateRandomMeme()">Рандом котик</button>
+        <button class="button" onclick="generateCat()">Котик с текстом</button>
+        <button class="button" onclick="generateRandomCat()">Рандом котик</button>
       </div>
-      <div id="memeOutput"></div>
+      <div id="catOutput"></div>
     </section>
   </main>
 
