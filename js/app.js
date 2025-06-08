@@ -1,7 +1,8 @@
-// Кешируем элементы
+// Элементы DOM
 const body = document.body;
 const themeToggle = document.querySelector('.theme-toggle');
 
+// Инициализация темы (сохраняется в localStorage)
 if (themeToggle) {
   // Загрузка сохранённой темы
   const saved = localStorage.getItem('theme');
@@ -10,7 +11,7 @@ if (themeToggle) {
     themeToggle.textContent = 'Ночь – День';
   }
 
-  // Переключение темы
+  // Обработчик переключения темы
   themeToggle.addEventListener('click', () => {
     const isLight = body.classList.toggle('light-mode');
     themeToggle.textContent = isLight ? 'День☀️' : 'Ночь🌙';
@@ -18,27 +19,42 @@ if (themeToggle) {
   });
 }
 
-// Поиск
+// Выполняет «Мне повезёт» поиск в Google по введённой фразе
 function performSearch() {
   const q = document.getElementById('searchInput').value.trim();
   if (!q) return alert('Черкани сначала чё-нить');
   window.location.href = `https://www.google.com/search?q=${encodeURIComponent(q)}&btnI`;
 }
 
-// Котики с текстом
+// Генерирует изображение котика с текстом
 function generateCat() {
   const text = document.getElementById('catText').value.trim();
   if (!text) return alert('Черкани сначала чё-нить');
   showCat(`https://cataas.com/cat/says/${encodeURIComponent(text)}?size=50&style=original&t=${Date.now()}`);
 }
 
+// Генерирует случайное изображение котика
 function generateRandomCat() {
   showCat(`https://cataas.com/cat?random=${Math.random()}`);
 }
 
+// Отображает изображение котика с анимацией загрузки
+// @param {string} url - URL изображения котика
 function showCat(url) {
   const out = document.getElementById('catOutput');
+  const existingCat = out.querySelector('img');
 
+  let spinner;
+  if (existingCat) {
+    // Добавляем спиннер поверх старого изображения
+    spinner = document.createElement('div');
+    spinner.className = 'spinner-overlay';
+    existingCat.style.position = 'relative';
+    existingCat.parentNode.style.position = 'relative';
+    out.appendChild(spinner);
+  }
+
+  // Создаём новый элемент img
   const newImg = document.createElement('img');
   newImg.src = url;
   newImg.alt = 'Котик';
@@ -52,21 +68,18 @@ function showCat(url) {
   out.appendChild(newImg);
 
   newImg.onload = () => {
-    // Когда загрузилась — убираем предыдущего (если он есть)
+    if (spinner) spinner.remove();
+
+    // Удаляем старое изображение
     const allCats = out.querySelectorAll('img');
     if (allCats.length > 1) {
-      out.removeChild(allCats[0]); // удаляем первого (старого)
+      out.removeChild(allCats[0]);
     }
 
-    // Затем плавно показываем нового
+    // Плавно показываем новую картинку и скроллим к ней
     requestAnimationFrame(() => {
       newImg.style.opacity = '1';
       newImg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   };
-}
-
-// Функция для снежинок (при необходимости)
-function generateSnowflakes() {
-  /* ваша логика */
 }

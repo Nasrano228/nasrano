@@ -6,7 +6,7 @@
   <title>Насрано даже здесь</title>
   <meta name="description" content="Модер, убери">
   <meta name="theme-color" content="#1c1c1c">
-  <!-- favicons -->
+  <!-- Иконки для разных устройств -->
   <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="shortcut icon" href="assets/favicon.ico" />
@@ -14,16 +14,17 @@
   <meta name="apple-mobile-web-app-title" content="Насрано" />
   <link rel="manifest" href="assets/site.webmanifest" />
 
-  <!-- Подключаем Inter -->
+  <!-- Подключение шрифта Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Подключение стилей с preload -->
+  <!-- Отложенная загрузка основного стиля -->
   <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
 </head>
 <body>
+  <!-- Шапка сайта с переключателем темы -->
   <header>
     <div class="header-container">
       <img src="assets/catblimp.gif" loading="lazy" class="header-img">
@@ -34,11 +35,13 @@
   </header>
 
   <main class="container">
+    <!-- Блок поиска -->
     <section class="search-section">
       <input type="text" id="searchInput" class="input-field" placeholder="Поиск..." />
       <button class="button" onclick="performSearch()">Поиск</button>
     </section>
         
+    <!-- Блок генерации котиков -->
     <section class="cat-section">
       <h2>Котики</h2>
       <input type="text" id="catText" class="input-field" placeholder="Текст пиши" />
@@ -50,12 +53,14 @@
     </section>
   </main>
 
+  <!-- Подвал с копирайтом -->
   <footer>
     <p>© 2025 Клан Насрано. Все права защищены.
       <a href="http://www.constitution.ru/" target="_blank">Политика конфиденциальности</a>.
     </p>
   </footer>
 
+  <!-- Основной скрипт приложения -->
   <script src="js/app.js" defer></script>
   
 </body>
