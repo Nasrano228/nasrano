@@ -83,3 +83,25 @@ function showCat(url) {
     });
   };
 }
+
+// Смена catblimp.gif по порядку
+const headerImgs = document.querySelectorAll('.header-img');
+const altImages = [
+  'assets/catblimp.gif',
+  'assets/mion.avif',
+  'assets/mion2.avif',
+  'assets/nasral.avif',
+  'assets/taa.avif'
+];
+
+// Для каждого изображения храним свой индекс
+headerImgs.forEach(img => {
+  img.dataset.imgIndex = '0'; // начальное значение
+
+  img.addEventListener('click', () => {
+    let index = parseInt(img.dataset.imgIndex, 10);
+    index = (index + 1) % altImages.length;
+    img.dataset.imgIndex = index;
+    img.src = altImages[index];
+  });
+});
